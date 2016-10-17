@@ -1,9 +1,11 @@
-FROM: nginx:1.10.1
+FROM nginx:1.10.1
 
 
-ADD vapor.conf /etc/nginx/sites-available/
+ADD vapor.conf /etc/nginx/conf.d/
 
 RUN rm /etc/nginx/conf.d/default.conf
+
+WORKDIR /vapor
 
 CMD ["nginx"]
 

@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  web:
+    container_name: vapor_web
+    build: ./nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes_from:
+      - data
+
+  vapor:
+    container_name: vapor_vapor
+    build: ./vapor
+    links:
+      - web
+    volumes_from:
+      - data
+
+  data:
+    container_name: vapor_data
+    image: tianon/true
+    volumes:
+      - ../:/vapor
