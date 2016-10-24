@@ -7,8 +7,6 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    volumes_from:
-      - data
 
   vapor:
     container_name: vapor_vapor
@@ -18,8 +16,8 @@ services:
     volumes_from:
       - data
 
+
   data:
-    container_name: vapor_data
     image: tianon/true
     volumes:
       - ../:/vapor
