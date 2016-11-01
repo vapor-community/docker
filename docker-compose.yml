@@ -10,12 +10,16 @@ services:
 
   vapor:
     container_name: vapor_vapor
-    build: ./vapor
+    build:
+      context: ./vapor
+      args:
+        - INSTALL_MYSQL=true
     links:
       - web
     volumes_from:
       - data
-
+    ports:
+      - "8080:8080"
 
   data:
     image: tianon/true
