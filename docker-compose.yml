@@ -7,6 +7,8 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    links:
+      - vapor
 
   vapor:
     container_name: vapor_vapor
@@ -14,12 +16,13 @@ services:
       context: ./vapor
       args:
         - INSTALL_MYSQL=true
-    links:
-      - web
     volumes_from:
       - data
     ports:
       - "8080:8080"
+#    entrypoint:
+#      - vapor
+#      - run
 
   data:
     image: tianon/true
