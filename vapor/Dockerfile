@@ -7,7 +7,16 @@ RUN if [ ${INSTALL_MYSQL} = true ]; then \
     apt-get install -y libmysqlclient18 libmysqlclient-dev && \
     rm -r /var/lib/apt/lists/* \
  ;fi
- 
+
+# Check if we should install mysql header files to the container (Defualt: false)
+ARG INSTALL_PGSQL=false
+RUN if [ ${INSTALL_PGSQL} = true ]; then \
+      apt-get update && \
+      apt-get install -y libpq-dev && \
+      rm -r /var/lib/apt/lists/* \
+;fi
+
+
 # Set work dir to /vapor
 WORKDIR /vapor
 
