@@ -16,6 +16,14 @@ RUN if [ ${INSTALL_PGSQL} = true ]; then \
       rm -r /var/lib/apt/lists/* \
 ;fi
 
+# Check if we should install mysql header files to the container (Defualt: false)
+ARG INSTALL_SQLITE=false
+RUN if [ ${INSTALL_SQLITE} = true ]; then \
+      apt-get update && \
+      apt-get install -y libsqlite3-dev && \
+      rm -r /var/lib/apt/lists/* \
+;fi
+
 
 # Set work dir to /vapor
 WORKDIR /vapor
