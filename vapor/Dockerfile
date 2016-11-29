@@ -1,4 +1,4 @@
-FROM zyxep/vapor:0.1
+FROM zyxep/vapor:0.2
 
 # Check if we should install mysql header files to the container (Defualt: false)
 ARG INSTALL_MYSQL=false
