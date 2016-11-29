@@ -45,3 +45,10 @@ So for example to get Swift & Vapor with MySQL support run this
 
 That will make a image with MySQL support based on my image.
 Then you can use the commands i put in the top of this document and replace `zyxep/vapor` with `vapormysql`.
+
+##### Nginx
+You need to name your vapor container for `vapor` that is done by adding `--name vapor` in the run command for your `vapor` image.
+Then you go to the folder nginx and build the image `docker build -t nginxvapor .`
+
+After the image has been build run it with `docker run -d --link vapor:vapor -p 80:80 nginxvapor`
+This command will start nginx and run it detached.
