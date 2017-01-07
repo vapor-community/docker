@@ -8,7 +8,7 @@ RUN if [ ${INSTALL_MYSQL} = true ]; then \
     rm -r /var/lib/apt/lists/* \
  ;fi
 
-# Check if we should install mysql header files to the container (Defualt: false)
+# Check if we should install postgres header files to the container (Defualt: false)
 ARG INSTALL_PGSQL=false
 RUN if [ ${INSTALL_PGSQL} = true ]; then \
       apt-get update && \
@@ -16,7 +16,7 @@ RUN if [ ${INSTALL_PGSQL} = true ]; then \
       rm -r /var/lib/apt/lists/* \
 ;fi
 
-# Check if we should install mysql header files to the container (Defualt: false)
+# Check if we should install sqlite header files to the container (Defualt: false)
 ARG INSTALL_SQLITE=false
 RUN if [ ${INSTALL_SQLITE} = true ]; then \
       apt-get update && \
