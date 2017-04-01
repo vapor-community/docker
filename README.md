@@ -6,20 +6,15 @@ You can download Docker For Mac/Windows here
 
 This will remove Docker toolbox and migrate your current containers to Docker Engine if you have any.
 
-The [base image](https://hub.docker.com/r/vapor/vapor/) is build on Ubuntu 16.04 with [Swift](https://github.com/apple/swift) 3 and [Vapor toolbox](https://github.com/vapor/toolbox)
+The [base image](https://hub.docker.com/r/vapor/vapor/) is build on Ubuntu 16.04 with [Swift](https://github.com/apple/swift) 3.1 and [Vapor toolbox](https://github.com/vapor/toolbox)
 
 ## Simple setup
 You can use the base image to get a simple setup with Vapor & Docker up and running.
 Go to your projects root directory and run this command
 
-`docker run --rm -ti -v $(pwd):/vapor vapor/vapor:latest vapor build`
+`docker run --rm -ti -v $(pwd):/vapor -p 8080:8080 vapor/vapor:latest`
 
-This command will start a container with a mounted directory so you can build the source inside the container, the container will shut down and remove it self when it's done.
-When it's done build run the following command
-
-`docker run -ti -v $(pwd):/vapor -p 8080:8080 vapor/vapor:latest vapor run`
-
-This command will start another container with same storage mount and bind port 8080 in the host to the container you can change the first `8080` to what ever you want to get that on the host machine.
+This command will start a container with a mounted directory and build and run the source inside the container. You can access to your app using https://localhost:8080
 
 **this image doesn't have MySQL, PGSQL or SQLite**
 
