@@ -1,7 +1,11 @@
 FROM swift
 
 # Install Vapor Toolbox
-RUN curl -sL toolbox.vapor.sh | bash
+RUN apt-get update && \
+      apt-get install -y sudo wget && \
+      curl -sL https://apt.vapor.sh | bash && \
+      apt-get update && \
+      apt-get install -y vapor;
 
 # Check if we should install mysql header files to the container (Defualt: false)
 ARG INSTALL_MYSQL=false
@@ -36,4 +40,4 @@ ARG EXECUTABLE=Run
 
 ENV EXECUTABLE=$EXECUTABLE
 
-CMD swift build -c release && .build/release/Run
+CMD swift build -c release && .build/release/$EXECUTABLE
