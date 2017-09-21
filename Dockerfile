@@ -10,9 +10,9 @@ RUN apt-get update && \
 # Get Vapor repo including Swift
 RUN curl -sL https://apt.vapor.sh | bash;
 
-# Installing Swift 3.1.1 & Vapor
+# Installing Swift & Vapor
 RUN apt-get update && \
-    apt-get -y install swift=3.1.1 vapor && \
+    apt-get -y install swift vapor && \
     rm -rf /var/lib/apt/lists/*;
 
 WORKDIR /vapor
