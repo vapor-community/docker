@@ -1,4 +1,11 @@
-FROM vapor/vapor:1.0-xenial
+FROM swift:3.1
+
+# Install Vapor Toolbox
+RUN apt-get update && \
+      apt-get install -y sudo wget && \
+      curl -sL https://apt.vapor.sh | bash && \
+      apt-get update && \
+      apt-get install -y vapor;
 
 # Check if we should install mysql header files to the container (Defualt: false)
 ARG INSTALL_MYSQL=false
@@ -24,8 +31,13 @@ RUN if [ ${INSTALL_SQLITE} = true ]; then \
       rm -r /var/lib/apt/lists/* \
 ;fi
 
-
 # Set work dir to /vapor
 WORKDIR /vapor
-
+VOLUME /vapor
 EXPOSE 8080
+
+ARG EXECUTABLE=Run
+
+ENV EXECUTABLE=$EXECUTABLE
+
+CMD swift build -c release && .build/release/$EXECUTABLE
