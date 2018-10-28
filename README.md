@@ -1,4 +1,4 @@
-# Vapor for Docker
+# Vapor for Docker [DEPRECATED, see this [guide](https://bygri.github.io)]
 
 This setup has been made with Docker 1.12 for Mac.
 You can download Docker For Mac/Windows here
